@@ -7,7 +7,7 @@
     <parent>
         <groupId>nl.gpesoft</groupId>
         <artifactId>spring-boot-docker</artifactId>
-        <version>1.0</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>spring-boot-docker-application</artifactId>

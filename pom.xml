@@ -13,7 +13,7 @@
     <groupId>nl.gpesoft</groupId>
     <artifactId>spring-boot-docker</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.0.0</version>
 
     <modules>
         <module>spring-boot-docker-domain</module>
