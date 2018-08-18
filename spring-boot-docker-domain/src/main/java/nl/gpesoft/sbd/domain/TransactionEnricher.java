@@ -1,4 +1,4 @@
-package nl.gpesoft.sbd.application;
+package nl.gpesoft.sbd.domain;
 
 import nl.gpesoft.sbd.domain.Transaction;
 

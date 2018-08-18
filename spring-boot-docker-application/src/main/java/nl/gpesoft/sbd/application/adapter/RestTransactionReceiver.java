@@ -1,11 +1,8 @@
 package nl.gpesoft.sbd.application.adapter;
 
-import nl.gpesoft.sbd.application.BookingDateEnricher;
-import nl.gpesoft.sbd.application.TransactionEnricher;
-import nl.gpesoft.sbd.application.TransactionProcessor;
+import nl.gpesoft.sbd.domain.TransactionProcessor;
 import nl.gpesoft.sbd.domain.Transaction;
 import nl.gpesoft.sbd.domain.ports.TransactionReceiver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,8 +17,7 @@ public class RestTransactionReceiver implements TransactionReceiver {
     private Transaction transaction;
 
     @RequestMapping(value = "/transaction", method = POST)
-    public ResponseEntity<String> receiveAndProcessAndStoreTransaction(@RequestBody Transaction transaction) {
-        // validate transaction
+    public ResponseEntity<String> receiveTransactionRequest(@RequestBody Transaction transaction) {
         if (!transaction.isValid()) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
         }
@@ -44,7 +40,8 @@ public class RestTransactionReceiver implements TransactionReceiver {
     }
 
     private void storeTransaction() {
-        //TODO
+        TransactionStorage transactionStorage = new TransactionStorage();
+        transactionStorage.save(transaction);
         System.out.println("transaction stored");
     }
 }

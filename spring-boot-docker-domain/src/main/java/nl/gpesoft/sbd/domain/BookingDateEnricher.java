@@ -1,6 +1,4 @@
-package nl.gpesoft.sbd.application;
-
-import nl.gpesoft.sbd.domain.Transaction;
+package nl.gpesoft.sbd.domain;
 
 import java.time.ZonedDateTime;
 

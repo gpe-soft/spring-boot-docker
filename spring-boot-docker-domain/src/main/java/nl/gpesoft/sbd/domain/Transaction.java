@@ -2,7 +2,7 @@ package nl.gpesoft.sbd.domain;
 
 import java.time.ZonedDateTime;
 
-public class Transaction {
+public class Transaction implements TransactionValidationService {
 
     private ZonedDateTime bookingDate;
     private String consumerId;
@@ -12,14 +12,6 @@ public class Transaction {
     private Integer amount;
     private Float unitPrice;
     private Float totalPrice;
-
-    public boolean isValid() {
-        boolean isValid = false;
-        if (consumerId != null && !consumerId.isEmpty()) {
-            isValid = true;
-        }
-        return isValid;
-    }
 
     public ZonedDateTime getBookingDate() {
         return bookingDate;
@@ -83,5 +75,14 @@ public class Transaction {
 
     public void setTotalPrice(Float totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    @Override
+    public boolean isValid() {
+        boolean isValid = false;
+        if (consumerId != null && !consumerId.isEmpty()) {
+            isValid = true;
+        }
+        return isValid;
     }
 }
